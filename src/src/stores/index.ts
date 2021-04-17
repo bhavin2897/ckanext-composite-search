@@ -1,6 +1,7 @@
-import { writable, get, derived } from "svelte/store";
+import { writable, derived } from "svelte/store";
 
-import type {FieldDetails} from '../utils'
+import type {FieldData} from '../types'
+import {FieldDetails} from '../utils'
 
 function createState(initial: boolean = false) {
   const { subscribe, set, update } = writable(initial);
@@ -12,16 +13,16 @@ function createState(initial: boolean = false) {
     toggle: () => update((state) => !state),
   };
 }
-function createFields(initial: FieldDetails[] = []) {
+function createFormData(initial: FieldData[] = []) {
   const {subscribe, set, update} = writable(initial);
   return {
     subscribe,
     set,
-    add: (field: FieldDetails) => update(fields => [...fields, field]),
-    get: function() {return get(fields)},
+    addDefault: function() {this.add({name: FieldDetails.default})},
+    add: (field: FieldData) => update(fields => [...fields, field]),
     remove: (idx: number) => update(fields => [...fields.slice(0, idx), ...fields.slice(idx+1)])
   }
 }
 
 export const state = createState();
-export const fields = createFields()
+export const formData = createFormData()

@@ -1,23 +1,23 @@
 <script lang="ts">
-  import {FieldDetails} from '../utils'
+  import {FieldDetails} from '../utils';
   import {Field} from '.'
-  import {fields} from '../stores';
+  import {formData, state} from '../stores';
   export let prefix: string;
   const add = () => {
-    const field = new FieldDetails()
-    fields.add(field)
+    formData.addDefault()
   }
   const remove = (idx: number) => {
-    fields.remove(idx)
+    formData.remove(idx)
   }
 </script>
 
-<div class="composite-form">
-  {#each $fields as field, idx (field)}
+<div class="composite-form" class:advanced={$state}>
+  {#each $formData as field, idx (field)}
     <Field {field} {prefix} on:remove={() => remove(idx)}/>
   {/each}
-  <button on:click={add}>
-    Add field
-  </button>
-
+  {#if $state}
+    <button on:click={add}>
+      Add field
+    </button>
+  {/if}
 </div>

@@ -1,11 +1,14 @@
 <script lang="ts">
-  import type { FieldDetails } from '../utils';
+  import type {FieldData} from '../types'
+
   export let prefix = '';
-  export let field: FieldDetails;
+  export let placeholder = '';
+  export let field: FieldData;
 </script>
+
 <input
-  name="{prefix}{field.options.name}"
+  name="{prefix}{field.name}"
   type="text"
-  bind:value={field.options.value}
-  placeholder={field.definition.placeholder}
+  bind:value={field.value}
+  {placeholder}
   />

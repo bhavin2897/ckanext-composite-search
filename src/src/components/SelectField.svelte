@@ -1,11 +1,13 @@
 <script lang="ts">
-  import type {FieldDetails} from '../utils'
+  import type {FieldData} from '../types'
+
   export let prefix = '';
-  export let field: FieldDetails;
+  export let options: {label: string, value: string}[];
+  export let field: FieldData;
 </script>
 
-<select id="" name="{prefix}{field.options.name}" bind:value={field.options.value}>
-  {#each field.definition.options as {value, label} (value)}
+<select id="" name="{prefix}{field.name}" bind:value={field.value}>
+  {#each options as {value, label} (value)}
     <option {value}>{label}</option>
   {/each}
 </select>
