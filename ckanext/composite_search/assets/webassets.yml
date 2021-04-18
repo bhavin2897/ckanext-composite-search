@@ -1,14 +1,15 @@
-# composite_search-js:
-#   filter: rjsmin
-#   output: ckanext-composite_search/%(version)s-composite_search.js
-#   contents:
-#     - js/composite_search.js
-#   extra:
-#     preload:
-#       - base/main
+composite_search:
+  filter: rjsmin
+  output: ckanext-composite_search/%(version)s-composite_search.js
+  contents:
+    - bundle.js
+  extra:
+    preload:
+      - base/main
+      - composite_search/composite_search-css:
 
-# composite_search-css:
-#   filter: cssrewrite
-#   output: ckanext-composite_search/%(version)s-composite_search.css
-#   contents:
-#     - css/composite_search.css
+composite_search-css:
+  filter: cssrewrite
+  output: ckanext-composite_search/%(version)s-composite_search.css
+  contents:
+    - bundle.css

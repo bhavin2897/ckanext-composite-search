@@ -35,8 +35,8 @@ export default {
 	output: {
 		sourcemap: true,
 		format: 'iife',
-		name: 'app',
-		file: 'public/build/bundle.js'
+		name: 'CompositeSearch',
+		file: '../ckanext/composite_search/assets/bundle.js'
 	},
 	plugins: [
 		svelte({
