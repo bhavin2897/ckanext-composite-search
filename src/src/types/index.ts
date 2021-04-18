@@ -1,14 +1,17 @@
-export type TextDefinition = {
+interface SharedDefinition {
+  placeholder?: string;
+  default?: boolean;
+  hidden?: boolean;
+  label: string;
+}
+
+export interface TextDefinition extends SharedDefinition {
   type: "text";
-  placeholder?: string;
-  default?: boolean;
-};
-export type SelectDefinition = {
+}
+export interface SelectDefinition extends SharedDefinition {
   type: "select";
-  placeholder?: string;
-  default?: boolean;
   options: { label: string; value: any }[];
-};
+}
 
 export type FieldDefinition = TextDefinition | SelectDefinition;
 
@@ -20,8 +23,8 @@ export enum Junction {
   NOT = "NOT",
 }
 
-export type FieldData = {
+export interface FieldData {
   name: string;
   value?: any;
   junction?: Junction;
-};
+}

@@ -4,30 +4,33 @@ const app = new App({
   target: document.body,
   props: {
     enabled: true,
+    solrHelpUrl: 'https://google.com',
+    withSolrQuery: false,
     prefix: "ext_composite_",
     definitions: {
-      any: { type: "text", placeholder: "Add a value" },
-      title: { type: "text" },
-      description: { type: "text" },
-      keyword: { type: "text" },
-      topic: { type: "text" },
-      purpose: { type: "text" },
+
+      any: { type: "text", label: "Any attribute", placeholder: "Add a value", default: true},
+      title: { type: "text", label: "Title", },
+      description: { type: "text", label: "Description", },
+      keyword: { type: "text", label: "Keyword", },
+      topic: { type: "text", label: "Topic", },
+      purpose: { type: "text", label: "Purpose", },
       data_type: {
         type: "select",
+	label: "Data Type",
+	placeholder: 'Choose Data Type',
         options: [
           { label: "First", value: "f" },
           { label: "Second", value: "s" },
           { label: "Third", value: "t" },
         ],
       },
-      attachment: { type: "text" },
+      attachment: { type: "text", label: "Attachment", },
+      solr: { type: "text", label: "SOLR", placeholder: 'SOLR query', hidden: true},
     },
     data: [
-      { name: "any", value: "random", junction: "AND" },
-      { name: "title", value: "like", junction: "OR" },
       { name: "title", value: "dislike", junction: "NOT" },
       { name: "data_type", value: "s" },
-      { name: "any" },
     ],
   },
 });

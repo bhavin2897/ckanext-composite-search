@@ -3,7 +3,7 @@ import { writable, derived } from "svelte/store";
 import type {FieldData} from '../types'
 import {FieldDetails} from '../utils'
 
-function createState(initial: boolean = false) {
+function createToggle(initial: boolean = false) {
   const { subscribe, set, update } = writable(initial);
   return {
     subscribe,
@@ -18,11 +18,13 @@ function createFormData(initial: FieldData[] = []) {
   return {
     subscribe,
     set,
-    addDefault: function() {this.add({name: FieldDetails.default})},
+    addDefault: function() {this.add({name: FieldDetails.default, value: null})},
+    addSolr: function() {this.add({name: FieldDetails.solr, value: null})},
     add: (field: FieldData) => update(fields => [...fields, field]),
     remove: (idx: number) => update(fields => [...fields.slice(0, idx), ...fields.slice(idx+1)])
   }
 }
 
-export const state = createState();
+export const state = createToggle();
+export const solrQuery = createToggle();
 export const formData = createFormData()

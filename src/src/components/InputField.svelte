@@ -12,3 +12,12 @@
   bind:value={field.value}
   {placeholder}
   />
+
+<style>
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 13px 0px 14px;
+  }
+</style>
