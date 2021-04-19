@@ -1,6 +1,6 @@
 <script lang="ts">
   import  {FieldDetails} from '../utils'
-  import { SelectInput } from '.';
+  import SelectInput from './SelectInput.svelte';
 
   export let value: any = 'x';
   let options = [...Object.entries(FieldDetails.definitions)]

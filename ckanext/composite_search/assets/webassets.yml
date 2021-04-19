@@ -3,6 +3,7 @@ composite_search:
   output: ckanext-composite_search/%(version)s-composite_search.js
   contents:
     - bundle.js
+    - composite_search-module.js
   extra:
     preload:
       - base/main

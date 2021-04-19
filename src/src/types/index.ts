@@ -27,4 +27,5 @@ export interface FieldData {
   name: string;
   value?: any;
   junction?: Junction;
+  id?: number;
 }

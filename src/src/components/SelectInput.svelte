@@ -1,6 +1,7 @@
 <script lang="ts">
   import {createEventDispatcher} from 'svelte';
-  import {CaretSvg} from '.'
+  import CaretSvg from './CaretSvg.svelte'
+  import {slide} from 'svelte/transition'
   const dispatch = createEventDispatcher();
   export let options: {label: string, value: any}[];;
   export let name: string;
@@ -18,7 +19,7 @@
   $: option = options.find(({value: v}) => v === value )
 </script>
 
-<div class="pseudo-select" class:full-width={fullWidth} class:open on:click={toggle} on:mouseleave={close} >
+<div class="pseudo-select" class:full-width={fullWidth} on:click={toggle} on:mouseleave={close} >
   <input type="hidden" {name} value={value}/>
   <div class="selected-value">
     <span class="label" class:placeholder={!option}>
@@ -28,11 +29,13 @@
       <CaretSvg/>
     </i>
   </div>
-  <ul class="options">
+  {#if open}
+  <ul class="options" transition:slide={{}}>
     {#each options as {value, label} (value)}
       <li class="option" on:click={select(value)}>{label}</li>
     {/each}
   </ul>
+  {/if}
 </div>
 
 <style>
@@ -62,19 +65,16 @@
     padding: 9px 14px;
   }
   .options {
-    display: none;
+    display: block;
     list-style: none;
     margin: 0px;
     padding: 0px;
-    width: 100%;
+    width: auto;
+    min-width: 100%;
+    white-space: nowrap;
     z-index: 1;
     position: absolute;
     background: #fff;
     border: 1px solid #eee;
-  }
-  .pseudo-select.open .options {
-    display: block;
-    width: auto;
-    white-space: nowrap;
   }
 </style>

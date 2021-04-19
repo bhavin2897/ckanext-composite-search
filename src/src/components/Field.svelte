@@ -2,12 +2,13 @@
   import {createEventDispatcher} from 'svelte'
   import  {FieldDetails} from '../utils'
   import type {FieldData} from '../types'
-  import {state, solrQuery} from '../stores';
 
-  import {JunctionInput, TypeInput, InputField, SelectField} from '.'
+  import JunctionInput from './JunctionInput.svelte';
+  import TypeInput from './TypeInput.svelte';
+  import InputField from './InputField.svelte';
+  import SelectField from './SelectField.svelte';
 
   const dispatch = createEventDispatcher()
-  export let prefix: string;
   export let field: FieldData;
 
   $: definition = FieldDetails.definitions[field.name]
@@ -18,18 +19,16 @@
 <div class="composite-field">
   <div class="input">
     {#if definition.type === 'text'}
-      <InputField {prefix} bind:field placeholder={definition.placeholder}/>
+      <InputField bind:field placeholder={definition.placeholder}/>
     {:else if definition.type === 'select'}
-      <SelectField {prefix} options={definition.options} bind:field placeholder={definition.placeholder}/>
+      <SelectField options={definition.options} bind:field placeholder={definition.placeholder}/>
     {:else}
       <strong>Unsupported field type</strong>
     {/if}
   </div>
-  {#if $state && !$solrQuery}
-    <TypeInput on:change={reset} bind:value={field.name}/>
-    <JunctionInput bind:value={field.junction} {prefix}/>
-    <button class="remove-field" on:click={remove}>&times;</button>
-  {/if}
+  <TypeInput on:change={reset} bind:value={field.name}/>
+  <JunctionInput bind:value={field.junction}/>
+  <button class="remove-field" on:click={remove}>&times;</button>
 </div>
 
 <style>
@@ -41,6 +40,7 @@
     line-height: 1rem;
     padding: 11px 24px;
     margin-bottom: 10px;
+    background: #fff;
   }
   .input {
     flex: 1;

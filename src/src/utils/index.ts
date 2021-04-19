@@ -1,9 +1,7 @@
-
-import type { Definitions, FieldData } from "../types";
+import type { Definitions } from "../types";
 export class FieldDetails {
   public static definitions: Definitions = {};
   public static default?: string;
-  public static solr?: string;
 
   public static setDefinitions(definitions: Definitions): void {
     this.definitions = definitions;
@@ -12,11 +10,9 @@ export class FieldDetails {
 
     for (let key of keys) {
       if (this.definitions[key].default) {
-	this.default = key;
-	break
+        this.default = key;
+        break;
       }
     }
-
-    this.solr = this.definitions.solr ? 'solr' : this.default;
   }
 }
