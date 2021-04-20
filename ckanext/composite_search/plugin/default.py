@@ -20,12 +20,11 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
             value = ' '.join([solr_literal(word) for word in param.value.split()])
             if not value:
                 continue
-            fragment = f"{param.type}:({value})"
-            if param.junction == 'NOT':
-                fragment = 'NOT ' + fragment + ' AND '
-            elif query:
-                fragment += ' ' + param.junction + ' '
-                query = f'{fragment} ({query})'
+            sign = '-' if param.junction == 'NOT' else '+'
+            fragment = f"{sign}{param.type}:({value})"
+            if query:
+                junction = param.junction if param.junction != 'NOT' else 'AND'
+                query = f'+{fragment} {junction} ({query})'
             else:
                 query = fragment
         q = search_params.get('q', '')
