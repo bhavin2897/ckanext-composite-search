@@ -29,5 +29,4 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
         q = search_params.get('q', '')
         q += ' ' + query
         search_params['q'] = q
-
         return search_params, params

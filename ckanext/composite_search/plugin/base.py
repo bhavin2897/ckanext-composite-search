@@ -52,18 +52,17 @@ class CompositeSearchPlugin(plugins.SingletonPlugin):
 
     def before_search(self, search_params: Dict[str, Any]) -> Dict[str, Any]:
         prefix = get_prefix()
+
         try:
-            params = [
-                SearchParam(*record)
-            for record in zip(
-                    *operator.itemgetter(*(prefix + k for k in SearchParam.keys))(
-                        search_params["extras"]
-                    )
-            )
-            ]
+            extras = operator.itemgetter(*(prefix + k for k in SearchParam.keys))(search_params["extras"])
         except KeyError as e:
             log.debug('Missing key: %s', e)
             return search_params
+
+        params = [
+            SearchParam(*record)
+            for record in zip(*[ex if isinstance(ex, list) else [ex] for ex in extras])
+        ]
         for plugin in plugins.PluginImplementations(ICompositeSearch):
             search_params, params = plugin.before_composite_search(
                 search_params, params
