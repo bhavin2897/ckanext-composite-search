@@ -25,6 +25,12 @@ class SearchParam:
         for k, v in zip(self.keys, values):
             setattr(self, k, v)
 
+    def __repr__(self):
+        return f'SearchParam({self.value!r}, {self.type!r}, {self.junction!r})'
+
+    def __bool__(self):
+        return bool(self.value)
+
 
 class ICompositeSearch(plugins.Interface):
     def before_composite_search(
@@ -54,15 +60,17 @@ class CompositeSearchPlugin(plugins.SingletonPlugin):
         prefix = get_prefix()
 
         try:
-            extras = operator.itemgetter(*(prefix + k for k in SearchParam.keys))(search_params["extras"])
+            extras = [toolkit.request.args.getlist(prefix + k) for k in SearchParam.keys]
         except KeyError as e:
             log.debug('Missing key: %s', e)
             return search_params
 
         params = [
             SearchParam(*record)
-            for record in zip(*[ex if isinstance(ex, list) else [ex] for ex in extras])
+            for record in zip(*extras)
+            if record[0]
         ]
+
         for plugin in plugins.PluginImplementations(ICompositeSearch):
             search_params, params = plugin.before_composite_search(
                 search_params, params

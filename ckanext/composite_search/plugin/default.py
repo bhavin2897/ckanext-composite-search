@@ -18,6 +18,8 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
         query = ''
         for param in reversed(params):
             value = ' '.join([solr_literal(word) for word in param.value.split()])
+            if not value:
+                continue
             fragment = f"{param.type}:({value})"
             if param.junction == 'NOT':
                 fragment = 'NOT ' + fragment + ' AND '
