@@ -61,8 +61,12 @@
   .selected-value .caret-icon {
     margin-inline-start: 8px;
   }
-  .full-width .selected-value, .option {
+  .full-width .selected-value {
     padding: 9px 14px;
+  }
+  .option {
+    padding: 4px 10px;
+    margin: 4px;
   }
   .options {
     display: block;
@@ -75,6 +79,8 @@
     z-index: 1;
     position: absolute;
     background: #fff;
-    border: 1px solid #eee;
+    border: 2px solid #E6E6E6;
+    border-radius: 2px;
+    margin-inline-start: -2px;
   }
 </style>

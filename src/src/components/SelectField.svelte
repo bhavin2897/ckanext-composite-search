@@ -7,4 +7,4 @@
   export let field: FieldData;
 </script>
 
-<SelectInput bind:value={field.value} {options} name="{$prefix}{field.name}" {placeholder}/>
+<SelectInput bind:value={field.value} {options} name="{$prefix}value" {placeholder}/>

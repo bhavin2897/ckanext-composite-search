@@ -19,7 +19,7 @@ function createFormData(initial: FieldData[] = []) {
   return {
     subscribe,
     set: (items: FieldData[]) => set(items.map(item => item.id ? item : {id: ++id, ...item})),
-    addDefault: function() {this.add({name: FieldDetails.default, value: null})},
+    addDefault: function() {this.add({type: FieldDetails.default, value: null})},
     add: (field: FieldData) => update(fields => [...fields, {id: ++id, ...field}]),
     remove: (idx: number) => update(fields => [...fields.slice(0, idx), ...fields.slice(idx+1)])
   }

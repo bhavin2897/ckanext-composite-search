@@ -10,11 +10,14 @@
   }
   const remove = (idx: number) => {
     formData.remove(idx)
+    if (!$formData.length) {
+      formData.addDefault()
+    }
   }
-  function handleDndConsider(e) {
+  function handleDndConsider(e: CustomEvent) {
     $formData = e.detail.items;
   }
-  function handleDndFinalize(e) {
+  function handleDndFinalize(e: CustomEvent) {
     $formData = e.detail.items;
   }
 </script>

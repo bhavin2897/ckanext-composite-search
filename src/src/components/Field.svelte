@@ -11,7 +11,7 @@
   const dispatch = createEventDispatcher()
   export let field: FieldData;
 
-  $: definition = FieldDetails.definitions[field.name]
+  $: definition = FieldDetails.definitions[field.type]
   const remove = () => dispatch('remove')
   const reset = () => field.value = null;
 </script>
@@ -26,7 +26,7 @@
       <strong>Unsupported field type</strong>
     {/if}
   </div>
-  <TypeInput on:change={reset} bind:value={field.name}/>
+  <TypeInput on:change={reset} bind:value={field.type}/>
   <JunctionInput bind:value={field.junction}/>
   <button class="remove-field" on:click={remove}>&times;</button>
 </div>
@@ -49,7 +49,7 @@
     background: none;
     border: none;
     padding: 0px;
-    min-width: 1rem;
+    margin: 6px 0px;
     margin-inline-start: 24px;
     cursor: pointer;
   }

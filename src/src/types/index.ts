@@ -24,7 +24,7 @@ export enum Junction {
 }
 
 export interface FieldData {
-  name: string;
+  type: string;
   value?: any;
   junction?: Junction;
   id?: number;

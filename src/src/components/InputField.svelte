@@ -7,7 +7,7 @@
 </script>
 
 <input
-  name="{$prefix}{field.name}"
+  name="{$prefix}value"
   type="text"
   bind:value={field.value}
   {placeholder}
@@ -18,6 +18,6 @@
     width: 100%;
     border: none;
     outline: none;
-    padding: 13px 0px 14px;
+    padding: 10px 0px;
   }
 </style>

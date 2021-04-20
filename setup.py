@@ -84,8 +84,8 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points='''
         [ckan.plugins]
-        composite_search=ckanext.composite_search.plugin:CompositeSearchPlugin
-
+        composite_search=ckanext.composite_search.plugin.base:CompositeSearchPlugin
+        default_composite_search=ckanext.composite_search.plugin.default:DefaultSearchPlugin
         [babel.extractors]
         ckan = ckan.lib.extract:extract_ckan
     ''',
