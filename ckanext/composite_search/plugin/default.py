@@ -24,7 +24,7 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
             fragment = f"{sign}{param.type}:({value})"
             if query:
                 junction = param.junction if param.junction != 'NOT' else 'AND'
-                query = f'+{fragment} {junction} ({query})'
+                query = f'{fragment} {junction} ({query})'
             else:
                 query = fragment
         q = search_params.get('q', '')
