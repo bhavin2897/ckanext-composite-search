@@ -20,12 +20,12 @@ export type Definitions = { [key: string]: FieldDefinition };
 export enum Junction {
   AND = "AND",
   OR = "OR",
-  NOT = "NOT",
 }
 
 export interface FieldData {
   type: string;
   value?: any;
   junction?: Junction;
+  negation?: boolean;
   id?: number;
 }

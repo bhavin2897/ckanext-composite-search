@@ -25,7 +25,7 @@ const app = new Example({
       attachment: { type: "text", label: "Attachment", },
     },
     data: [
-      { type: "title", value: "dislike", junction: "NOT" },
+        { type: "title", value: "dislike", junction: "OR", negation: true},
       { type: "data_type", value: "s" },
     ],
   },

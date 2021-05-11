@@ -3,13 +3,17 @@
   import  {FieldDetails} from '../utils'
   import type {FieldData} from '../types'
 
+
+  import NegationSwitch from './NegationSwitch.svelte';
   import JunctionInput from './JunctionInput.svelte';
   import TypeInput from './TypeInput.svelte';
   import InputField from './InputField.svelte';
   import SelectField from './SelectField.svelte';
+  import DotsSvg from './DotsSvg.svelte';
 
   const dispatch = createEventDispatcher()
   export let field: FieldData;
+  export let isLast: boolean = false;
 
   $: definition = FieldDetails.definitions[field.type]
   const remove = () => dispatch('remove')
@@ -17,6 +21,9 @@
 </script>
 
 <div class="composite-field">
+  <i class="drag-handle">
+    <DotsSvg/>
+  </i>
   <div class="input">
     {#if definition.type === 'text'}
       <InputField bind:field placeholder={definition.placeholder}/>
@@ -26,12 +33,17 @@
       <strong>Unsupported field type</strong>
     {/if}
   </div>
+
+  <NegationSwitch bind:value={field.negation}/>
   <TypeInput on:change={reset} bind:value={field.type}/>
-  <JunctionInput bind:value={field.junction}/>
+  <JunctionInput disabled={isLast} bind:value={field.junction}/>
   <button class="remove-field" on:click={remove}>&times;</button>
 </div>
 
 <style>
+  .drag-handle {
+    margin-inline-end: 8px;
+  }
   .composite-field {
     border: 1px solid grey;
     border-radius: 5px;

@@ -26,7 +26,7 @@
   <div use:dndzone={{items: $formData, flipDurationMs, dropTargetStyle}} on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
     {#each $formData as field, idx (field)}
       <div animate:flip={{duration: 300}}>
-	<Field  bind:field on:remove={() => remove(idx)} />
+	<Field  bind:field on:remove={() => remove(idx)} isLast={idx == $formData.length - 1} />
       </div>
     {/each}
   </div>

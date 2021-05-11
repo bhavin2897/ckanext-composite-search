@@ -1,6 +1,7 @@
 from typing import Dict, Any, List, Tuple
 
 import ckan.plugins as plugins
+import ckan.plugins.toolkit as tk
 
 from ckan.lib.search.query import solr_literal
 
@@ -20,11 +21,10 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
             value = ' '.join([solr_literal(word) for word in param.value.split()])
             if not value:
                 continue
-            sign = '-' if param.junction == 'NOT' else '+'
+            sign = '-' if tk.asbool(param.negation) else '+'
             fragment = f"{sign}{param.type}:({value})"
             if query:
-                junction = param.junction if param.junction != 'NOT' else 'AND'
-                query = f'{fragment} {junction} ({query})'
+                query = f'{fragment} {param.junction} ({query})'
             else:
                 query = fragment
         q = search_params.get('q', '')

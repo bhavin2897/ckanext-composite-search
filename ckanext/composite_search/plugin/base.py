@@ -16,17 +16,18 @@ def get_prefix() -> str:
 
 
 class SearchParam:
-    keys = ("value", "type", "junction")
+    keys = ("value", "type", "junction", "negation")
     value: str
     type: str
     junction: str
+    negation: str
 
     def __init__(self, *values):
         for k, v in zip(self.keys, values):
             setattr(self, k, v)
 
     def __repr__(self):
-        return f'SearchParam({self.value!r}, {self.type!r}, {self.junction!r})'
+        return f'SearchParam({self.value!r}, {self.type!r}, {self.junction!r}, {self.negation!r})'
 
     def __bool__(self):
         return bool(self.value)

@@ -12,6 +12,7 @@ import SelectInput from './SelectInput.svelte'
 
 import CaretSvg from './CaretSvg.svelte'
 import InfoSvg from './InfoSvg.svelte'
+import DotsSvg from './DotsSvg.svelte'
 
 export {
   BaseForm,
@@ -25,4 +26,5 @@ export {
   SelectInput,
   CaretSvg,
   InfoSvg,
+  DotsSvg,
 }

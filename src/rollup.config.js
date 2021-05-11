@@ -37,7 +37,7 @@ function serve() {
 export default {
   input: production ? "src/main.ts" : "src/dev.ts",
   output: {
-    sourcemap: true,
+    sourcemap: !production,
     format: "iife",
     name: "CompositeSearch",
     file: production

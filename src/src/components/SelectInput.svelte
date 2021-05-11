@@ -5,6 +5,7 @@
   const dispatch = createEventDispatcher();
   export let options: {label: string, value: any}[];;
   export let name: string;
+  export let disabled: boolean = false;
   export let placeholder: string = '';
   export let value: any = null;
   export let fullWidth = false;
@@ -19,7 +20,7 @@
   $: option = options.find(({value: v}) => v === value )
 </script>
 
-<div class="pseudo-select" class:full-width={fullWidth} on:click={toggle} on:mouseleave={close} >
+<div class="pseudo-select" class:full-width={fullWidth} class:disabled on:click={toggle} on:mouseleave={close} >
   <input type="hidden" {name} value={value}/>
   <div class="selected-value">
     <span class="label" class:placeholder={!option}>
@@ -39,6 +40,12 @@
 </div>
 
 <style>
+  .disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    color: #9C9B99;
+  }
+
   .pseudo-select {
     display: inline-block;
     position: relative;
