@@ -11,20 +11,32 @@ CONFIG_PREFIX = "ckanext.composite_search.prefix"
 DEFAULT_PREFIX = "ext_composite_"
 
 
+def identity(v):
+    return v
+
+
+def try_bool(v):
+    try:
+        return toolkit.asbool(v)
+    except ValueError:
+        return bool(v)
+
+
 def get_prefix() -> str:
     return toolkit.config.get(CONFIG_PREFIX, DEFAULT_PREFIX)
 
 
 class SearchParam:
     keys = ("value", "type", "junction", "negation")
+    converters = (identity, identity, identity, try_bool)
     value: str
     type: str
     junction: str
-    negation: str
+    negation: bool
 
     def __init__(self, *values):
-        for k, v in zip(self.keys, values):
-            setattr(self, k, v)
+        for k, v, conv in zip(self.keys, values, self.converters):
+            setattr(self, k, conv(v))
 
     def __repr__(self):
         return f'SearchParam({self.value!r}, {self.type!r}, {self.junction!r}, {self.negation!r})'
