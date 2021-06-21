@@ -7,19 +7,17 @@ ckan.module("composite-search", function ($) {
     return {
         options: {
             prefix: "ext_composite_",
-            definitions: null,
+            config: null,
             urlInit: false,
             enabled: false,
         },
         initialize: function () {
-            var definitions = {};
-            if (this.options.definitions) {
-                definitions = window[this.options.definitions];
-            }
+            var config = this.options.config || {};
             this.app = new App({
                 target: this.el[0],
                 props: {
-                    definitions: definitions,
+                    definitions: config.definitions,
+                    order: config.order
                 },
             });
             stores.prefix.set(this.options.prefix);
@@ -32,6 +30,7 @@ ckan.module("composite-search", function ($) {
         teardown: function () {
             this.sandbox.unsubscribe(EVENT_TOGGLE, this._onToggle);
         },
+
         _initFromUrl: function () {
             var self = this;
             var stacks = window.location.search

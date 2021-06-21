@@ -30,7 +30,7 @@
       </div>
     {/each}
   </div>
-  <button class="add-field" on:click={add}>
+  <button class="add-field" on:click={add} type="button">
     <strong>+</strong>
     Add search field
   </button>

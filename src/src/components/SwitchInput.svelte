@@ -39,7 +39,7 @@
     margin: 0 4px;
   }
   .active .switch-wrapper {
-    background: #56BEA0;
+    background: #333;
   }
   .switch-handle {
     display: inline-block;

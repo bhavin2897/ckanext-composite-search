@@ -5,7 +5,8 @@
   import type {Definitions} from './types';
 
   export let definitions: Definitions = {};
-  FieldDetails.setDefinitions(definitions)
+  export let order: Array<string> = [];
+  FieldDetails.setDefinitions(definitions, order)
 
 </script>
 

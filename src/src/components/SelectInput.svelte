@@ -23,7 +23,7 @@
 <div class="pseudo-select" class:full-width={fullWidth} class:disabled on:click={toggle} on:mouseleave={close} >
   <input type="hidden" {name} value={value}/>
   <div class="selected-value">
-    <span class="label" class:placeholder={!option}>
+    <span class="value-label" class:placeholder={!option}>
       {option ? option.label : placeholder}
     </span>
     <i class="caret-icon">

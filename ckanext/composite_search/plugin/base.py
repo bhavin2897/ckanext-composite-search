@@ -1,9 +1,11 @@
+from __future__ import annotations
 import logging
-import operator
-from typing import Dict, Any, List, Tuple
+from typing import Any
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
+from ..utils import SearchParam
+from ..interfaces import ICompositeSearch
 
 log = logging.getLogger(__name__)
 
@@ -11,46 +13,8 @@ CONFIG_PREFIX = "ckanext.composite_search.prefix"
 DEFAULT_PREFIX = "ext_composite_"
 
 
-def identity(v):
-    return v
-
-
-def try_bool(v):
-    try:
-        return toolkit.asbool(v)
-    except ValueError:
-        return bool(v)
-
-
 def get_prefix() -> str:
     return toolkit.config.get(CONFIG_PREFIX, DEFAULT_PREFIX)
-
-
-class SearchParam:
-    keys = ("value", "type", "junction", "negation")
-    converters = (identity, identity, identity, try_bool)
-    value: str
-    type: str
-    junction: str
-    negation: bool
-
-    def __init__(self, *values):
-        for k, v, conv in zip(self.keys, values, self.converters):
-            setattr(self, k, conv(v))
-
-    def __repr__(self):
-        return f'SearchParam({self.value!r}, {self.type!r}, {self.junction!r}, {self.negation!r})'
-
-    def __bool__(self):
-        return bool(self.value)
-
-
-class ICompositeSearch(plugins.Interface):
-    def before_composite_search(
-        self, search_params: Dict[str, Any], params: List[SearchParam]
-    ) -> Tuple[Dict[str, Any], List[SearchParam]]:
-
-        return search_params, params
 
 
 class CompositeSearchPlugin(plugins.SingletonPlugin):
@@ -69,7 +33,7 @@ class CompositeSearchPlugin(plugins.SingletonPlugin):
 
     # IPackageController
 
-    def before_search(self, search_params: Dict[str, Any]) -> Dict[str, Any]:
+    def before_search(self, search_params: dict[str, Any]) -> dict[str, Any]:
         prefix = get_prefix()
 
         try:

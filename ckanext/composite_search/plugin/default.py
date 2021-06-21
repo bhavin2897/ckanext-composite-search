@@ -1,11 +1,13 @@
-from typing import Dict, Any, List, Tuple
+from __future__ import annotations
+from typing import Any
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as tk
 
 from ckan.lib.search.query import solr_literal
 
-from .base import ICompositeSearch, SearchParam
+from ..interfaces import ICompositeSearch
+from ..utils import SearchParam
 
 
 class DefaultSearchPlugin(plugins.SingletonPlugin):
@@ -14,8 +16,8 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
     # ICompositeSearch
 
     def before_composite_search(
-        self, search_params: Dict[str, Any], params: List[SearchParam]
-    ) -> Tuple[Dict[str, Any], List[SearchParam]]:
+        self, search_params: dict[str, Any], params: list[SearchParam]
+    ) -> tuple[dict[str, Any], list[SearchParam]]:
         query = ''
         for param in reversed(params):
             value = ' '.join([solr_literal(word) for word in param.value.split()])

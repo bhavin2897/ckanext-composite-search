@@ -10,6 +10,7 @@
   import InputField from './InputField.svelte';
   import SelectField from './SelectField.svelte';
   import DotsSvg from './DotsSvg.svelte';
+  import CrossArrowSvg from './CrossArrowSvg.svelte';
 
   const dispatch = createEventDispatcher()
   export let field: FieldData;
@@ -34,6 +35,9 @@
     {/if}
   </div>
 
+  <i class="drag-handle">
+    <CrossArrowSvg/>
+  </i>
   <NegationSwitch bind:value={field.negation}/>
   <TypeInput on:change={reset} bind:value={field.type}/>
   <JunctionInput disabled={isLast} bind:value={field.junction}/>
