@@ -35,6 +35,13 @@ const app = new Example({
                     { label: "First", value: "f" },
                     { label: "Second", value: "s" },
                     { label: "Third", value: "t" },
+                    { label: "First", value: "ff" },
+                    { label: "Second", value: "ss" },
+                    { label: "Third", value: "tt" },
+                    { label: "First", value: "fff" },
+                    { label: "Second", value: "sss" },
+                    { label: "Third", value: "ttt" },
+
                 ],
             },
             attachment: { type: "text", label: "Attachment" },

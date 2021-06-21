@@ -1,4 +1,7 @@
 <script lang="ts">
+  import SimpleBar from 'simplebar';
+  import 'simplebar/dist/simplebar.css';
+
   import {createEventDispatcher} from 'svelte';
   import CaretSvg from './CaretSvg.svelte'
   import {slide} from 'svelte/transition'
@@ -31,7 +34,7 @@
     </i>
   </div>
   {#if open}
-  <ul class="options" transition:slide={{}}>
+  <ul class="options" transition:slide={{}} data-simplebar>
     {#each options as {value, label} (value)}
       <li class="option" on:click={select(value)}>{label}</li>
     {/each}
@@ -89,5 +92,8 @@
     border: 2px solid #E6E6E6;
     border-radius: 2px;
     margin-inline-start: -2px;
+    max-height: 250px;
+    overflow: auto;
+    padding-right: 30px;
   }
 </style>
