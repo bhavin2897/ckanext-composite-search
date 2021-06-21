@@ -34,7 +34,7 @@
     </i>
   </div>
   {#if open}
-  <ul class="options" transition:slide={{}} data-simplebar>
+  <ul class="options" transition:slide={{duration: 200}} data-simplebar>
     {#each options as {value, label} (value)}
       <li class="option" on:click={select(value)}>{label}</li>
     {/each}
@@ -55,6 +55,8 @@
     font-size: 14px;
     line-height: 20px;
     cursor: pointer;
+    width: 100%;
+
   }
   .full-width {
     width: 100%;
@@ -77,6 +79,7 @@
   .option {
     padding: 4px 10px;
     margin: 4px;
+    white-space: break-spaces;
   }
   .options {
     display: block;
@@ -93,7 +96,5 @@
     border-radius: 2px;
     margin-inline-start: -2px;
     max-height: 250px;
-    overflow: auto;
-    padding-right: 30px;
   }
 </style>

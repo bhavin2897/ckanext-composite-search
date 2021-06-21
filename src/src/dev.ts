@@ -40,11 +40,11 @@ const app = new Example({
                     { label: "Third", value: "tt" },
                     { label: "First", value: "fff" },
                     { label: "Second", value: "sss" },
-                    { label: "Third", value: "ttt" },
+                    { label: "Third sdf sd fsdf sdf sdf sdfsdf sdf ", value: "ttt" },
 
                 ],
             },
-            attachment: { type: "text", label: "Attachment" },
+            attachment: { type: "text", label: "File Attachment or smth" },
         },
         data: [
             { type: "title", value: "dislike", junction: "OR", negation: true },

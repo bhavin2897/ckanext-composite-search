@@ -22,7 +22,7 @@
 </script>
 
 <div class="composite-field">
-  <i class="drag-handle">
+  <i class="drag-handle left-drag-handle">
     <DotsSvg/>
   </i>
   <div class="input">
@@ -35,7 +35,7 @@
     {/if}
   </div>
 
-  <i class="drag-handle">
+  <i class="drag-handle center-drag-handle">
     <CrossArrowSvg/>
   </i>
   <NegationSwitch bind:value={field.negation}/>
@@ -47,6 +47,9 @@
 <style>
   .drag-handle {
     margin-inline-end: 8px;
+  }
+  .center-drag-handle {
+    margin-inline-start: 8px;
   }
   .composite-field {
     border: 1px solid grey;
