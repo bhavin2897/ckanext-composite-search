@@ -35,8 +35,14 @@ class CompositeSearchPlugin(plugins.SingletonPlugin):
 
     def before_search(self, search_params: dict[str, Any]) -> dict[str, Any]:
         prefix = get_prefix()
+        original_extras = search_params.get("extras", {})
+        if not any(prefix + key in original_extras for key in SearchParam.keys):
+            # It's internal call via `get_action`
+            return search_params
 
         try:
+            # cannot use search_params["extras"] because they don't contain
+            # values from empty/unchecked fields
             extras = [toolkit.request.args.getlist(prefix + k) for k in SearchParam.keys]
         except KeyError as e:
             log.debug('Missing key: %s', e)

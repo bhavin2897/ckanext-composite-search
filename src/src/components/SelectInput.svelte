@@ -34,7 +34,7 @@
     </i>
   </div>
   {#if open}
-  <ul class="options" transition:slide={{duration: 200}} data-simplebar>
+  <ul class="options"  data-simplebar>
     {#each options as {value, label} (value)}
       <li class="option" on:click={select(value)}>{label}</li>
     {/each}
@@ -79,7 +79,6 @@
   .option {
     padding: 4px 10px;
     margin: 4px;
-    white-space: break-spaces;
   }
   .options {
     display: block;
