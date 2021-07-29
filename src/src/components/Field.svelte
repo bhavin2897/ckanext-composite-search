@@ -3,7 +3,7 @@
   import  {FieldDetails} from '../utils'
   import type {FieldData} from '../types'
 
-
+  import CloseCrossSvg from "./CloseCrossSvg.svelte";
   import NegationSwitch from './NegationSwitch.svelte';
   import JunctionInput from './JunctionInput.svelte';
   import TypeInput from './TypeInput.svelte';
@@ -30,6 +30,8 @@
       <InputField bind:field placeholder={definition.placeholder}/>
     {:else if definition.type === 'select'}
       <SelectField options={definition.options} bind:field placeholder={definition.placeholder}/>
+    {:else if definition.type === 'autocomplete-select'}
+      <SelectField options={definition.options} bind:field placeholder={definition.placeholder} autocomplete={true}/>
     {:else}
       <strong>Unsupported field type</strong>
     {/if}
@@ -41,7 +43,7 @@
   <NegationSwitch bind:value={field.negation}/>
   <TypeInput on:change={reset} bind:value={field.type}/>
   <JunctionInput disabled={isLast} bind:value={field.junction}/>
-  <button class="remove-field" on:click={remove}>&times;</button>
+  <button class="remove-field" on:click={remove}> <CloseCrossSvg /></button>
 </div>
 
 <style>
@@ -63,6 +65,7 @@
   }
   .input {
     flex: 1;
+    width: 100%;
   }
   .remove-field {
     background: none;
