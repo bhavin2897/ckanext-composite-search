@@ -27,20 +27,20 @@ const app = new Example({
             keyword: { type: "text", label: "Keyword" },
             topic: { type: "text", label: "Topic" },
             purpose: { type: "text", label: "Purpose" },
-            data_type: {
-                type: "select",
-                label: "Data Type",
-                placeholder: "Choose Data Type",
+            organization: {
+                type: "autocomplete-select",
+                label: "Organization",
+                placeholder: "Choose organization",
                 options: [
-                    { label: "First", value: "f" },
-                    { label: "Second", value: "s" },
-                    { label: "Third", value: "t" },
-                    { label: "First", value: "ff" },
-                    { label: "Second", value: "ss" },
-                    { label: "Third", value: "tt" },
-                    { label: "First", value: "fff" },
-                    { label: "Second", value: "sss" },
-                    { label: "Third sdf sd fsdf sdf sdf sdfsdf sdf ", value: "ttt" },
+                    { label: "Mining Tenements (DMIRS-003)", value: "1" },
+                    { label: "Heritage Areas (DPLH-089)", value: "2" },
+                    { label: "Heritage List (DPLH-090)", value: "3" },
+                    { label: "Public Transport Authority Rail Distance Measures (PTA-005)", value: "4" },
+                    { label: "Distribution Overhead Powerlines (WP-031)", value: "5" },
+                    { label: "Distribution Pole (WP-029)", value: "6" },
+                    { label: "Distribution Underground Cables (WP-034)", value: "7" },
+                    { label: "Electrical Enclosures (WP-040)", value: "8" },
+                    { label: "Electrical Pillars (WP-041)", value: "9" },
 
                 ],
             },
@@ -48,7 +48,7 @@ const app = new Example({
         },
         data: [
             { type: "title", value: "dislike", junction: "OR", negation: true },
-            { type: "data_type", value: "s" },
+            { type: "organization", value: "9" },
         ],
     },
 });

@@ -1,11 +1,10 @@
 <script lang="ts">
-  import SimpleBar from 'simplebar';
   import 'simplebar/dist/simplebar.css';
-
   import {createEventDispatcher} from 'svelte';
   import CaretSvg from './CaretSvg.svelte'
-  import {slide} from 'svelte/transition'
+
   const dispatch = createEventDispatcher();
+
   export let options: {label: string, value: any}[];;
   export let name: string;
   export let disabled: boolean = false;
