@@ -94,5 +94,7 @@
     border-radius: 2px;
     margin-inline-start: -2px;
     max-height: 250px;
+
+    overflow-y: auto;
   }
 </style>
