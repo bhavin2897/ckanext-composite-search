@@ -44,11 +44,28 @@ const app = new Example({
 
                 ],
             },
+            format: {
+                type: "autocomplete-select",
+                label: "Format",
+                placeholder: "Choose format",
+                options: [
+                    { label: "CSV", value: "csv" },
+                    { label: "JPEG", value: "jpeg" },
+                    { label: "XML", value: "xml" },
+                    { label: "DRF", value: "drf" },
+                    { label: "PPT", value: "ppt" },
+                    { label: "PPTX", value: "pptx" },
+                    { label: "GeoJSON", value: "geojson" },
+                    { label: "JSON", value: "json" },
+                    { label: "RAW", value: "raw" },
+                ],
+            },
             attachment: { type: "text", label: "File Attachment or smth" },
         },
         data: [
             { type: "title", value: "dislike", junction: "OR", negation: true },
             { type: "organization", value: "9" },
+            { type: "format", value: "" },
         ],
     },
 });

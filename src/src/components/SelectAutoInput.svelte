@@ -1,6 +1,7 @@
 <script lang="ts">
   import CaretSvg from "./CaretSvg.svelte";
   import CloseCrossSvg from "./CloseCrossSvg.svelte";
+  import { tick } from 'svelte';
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
@@ -55,6 +56,10 @@
       return;
     }
 
+    if (e.key !== 'Backspace') {
+      e.preventDefault();
+    }
+
     let selectedEl = opts.querySelector("li.selected");
 
     switch (e.key) {
@@ -63,12 +68,11 @@
           return;
         }
         let itemValue = selectedEl.getAttribute("data-value");
-        let itemLabel = selectedEl.textContent;
+        let itemLabel = selectedEl.getAttribute("data-label");
 
-        select(itemLabel.trim(), itemValue);
+        select(itemLabel, itemValue);
         break;
       case "ArrowDown":
-        e.preventDefault();
         open();
 
         if (hasClass(opts.querySelectorAll("li"), "selected")) {
@@ -84,7 +88,6 @@
         }
         break;
       case "ArrowUp":
-        e.preventDefault();
         open();
 
         if (hasClass(opts.querySelectorAll("li"), "selected")) {
@@ -103,7 +106,6 @@
         value = "";
         break;
       case "Escape":
-        e.preventDefault();
         close();
         break;
       default:
@@ -111,9 +113,11 @@
     }
   }
 
-  function select(l, v) {
+  async function select(l, v) {
     value = v;
     label = l;
+
+    await tick();
     input.value = option ? option.label : "";
 
     dispatch("change", { value });
@@ -134,12 +138,16 @@
   }
 
   function _selectFirst() {
-    if (opts) {
+    if (opts && !_isSelected()) {
       let firstItem = opts.querySelector("li:first-child");
       if (firstItem) {
         firstItem.classList.add("selected");
       }
     }
+  }
+
+  function _isSelected() {
+    return opts.querySelector("li.selected") ?? false;
   }
 
   function _unselectAll() {
@@ -162,6 +170,15 @@
     label = "";
     close();
   }
+
+  function optionClick() {
+    this.classList.add('selected');
+    select(
+      this.getAttribute('data-label'),
+      this.getAttribute('data-value')
+    );
+    
+  }
 </script>
 
 <div class="select2" class:active={isOpen}>
@@ -177,9 +194,11 @@
         autocomplete="off"
       />
     </span>
-    <i class="cross-icon" on:click|stopPropagation={clear}>
-      <CloseCrossSvg />
-    </i>
+    {#if label}
+      <i class="cross-icon" on:click|stopPropagation={clear}>
+        <CloseCrossSvg />
+      </i>
+    {/if}
     <i class="caret-icon">
       <CaretSvg />
     </i>
@@ -190,18 +209,19 @@
     class:show={isOpen}
     data-simplebar
     bind:this={opts}
-    on:mouseleave={close}
+    on:mouseleave="{close}"
   >
-    {#each options as { value: v, label: l } (v)}
-      {#if search(l, label)}
+    {#each options as opt (opt.value)}
+      {#if search(opt.label, label)}
         <li
           class="select2-options--option"
-          class:selected={value === v}
-          data-value={v}
+          class:selected={value === opt.value}
+          data-value={opt.value}
+          data-label={opt.label}
           role="option"
-          on:click={() => select(l.trim(), v)}
+          on:click={() => {select(opt.label, opt.value)}}
         >
-          {@html highlight(l, label)}
+          {@html highlight(opt.label, label)}
         </li>
       {/if}
     {/each}
@@ -263,6 +283,9 @@
     margin: 4px;
 
     cursor: pointer;
+  }
+  .select2-options--option:hover {
+    background-color: #f1f1f1;
   }
   .select2-options--option.selected {
     background-color: #dcdcdc;
