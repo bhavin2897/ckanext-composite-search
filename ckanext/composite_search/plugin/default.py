@@ -31,5 +31,5 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
                 query = fragment
         q = search_params.get('q', '')
         q += ' ' + query
-        search_params['q'] = q
+        search_params['q'] = q.strip()
         return search_params, params
