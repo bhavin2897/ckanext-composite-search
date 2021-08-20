@@ -9,6 +9,19 @@ from ckan.lib.search.query import solr_literal
 from ..interfaces import ICompositeSearch
 from ..utils import SearchParam
 
+CONFIG_LITERAL_QUOTES = "ckanext.composite_search.literal.quotes"
+DEFAULT_LITERAL_QUOTES = "double"
+
+def single_quote_solr_literal(t: str) -> str:
+    escaped = t.replace("'", r"\'")
+    return f"'{escaped}'"
+
+
+_literals = {
+    "single": single_quote_solr_literal,
+    "double": solr_literal,
+}
+
 
 class DefaultSearchPlugin(plugins.SingletonPlugin):
     plugins.implements(ICompositeSearch)
@@ -19,8 +32,11 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
         self, search_params: dict[str, Any], params: list[SearchParam]
     ) -> tuple[dict[str, Any], list[SearchParam]]:
         query = ''
+
+        literal = _literals.get(tk.config.get(CONFIG_LITERAL_QUOTES, DEFAULT_LITERAL_QUOTES), _literals[DEFAULT_LITERAL_QUOTES])
+
         for param in reversed(params):
-            value = ' '.join([solr_literal(word) for word in param.value.split()])
+            value = ' '.join([literal(word) for word in param.value.split()])
             if not value:
                 continue
             sign = '-' if tk.asbool(param.negation) else '+'
