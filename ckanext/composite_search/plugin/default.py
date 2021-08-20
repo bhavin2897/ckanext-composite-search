@@ -12,14 +12,22 @@ from ..utils import SearchParam
 CONFIG_LITERAL_QUOTES = "ckanext.composite_search.literal.quotes"
 DEFAULT_LITERAL_QUOTES = "double"
 
+
 def single_quote_solr_literal(t: str) -> str:
     escaped = t.replace("'", r"\'")
     return f"'{escaped}'"
 
 
+def both_quote_solr_literal(t: str) -> str:
+    single = single_quote_solr_literal(t)
+    double = solr_literal(t)
+    return f"{single} OR {double}"
+
 _literals = {
     "single": single_quote_solr_literal,
     "double": solr_literal,
+    "both": both_quote_solr_literal,
+
 }
 
 
