@@ -18,7 +18,11 @@
 
   $: definition = FieldDetails.definitions[field.type]
   const remove = () => dispatch('remove')
-  const reset = () => field.value = null;
+  const reset = () => {
+    if (definition.type !== "text") {
+      field.value = null;
+    }
+  }
 </script>
 
 <div class="composite-field">
@@ -43,7 +47,7 @@
   <NegationSwitch bind:value={field.negation}/>
   <TypeInput on:change={reset} bind:value={field.type}/>
   <JunctionInput disabled={isLast} bind:value={field.junction}/>
-  <button class="remove-field" on:click={remove}> <CloseCrossSvg /></button>
+  <button type="button" class="remove-field" on:click={remove}> <CloseCrossSvg /></button>
 </div>
 
 <style>

@@ -4,6 +4,19 @@
 
   export let placeholder = '';
   export let field: FieldData;
+
+  const keyDispatcher = (e) => {
+    switch (e.key) {
+      case "Enter":
+        return _submitForm(e.target);
+      default:
+        break;
+    }
+  }
+
+  const _submitForm = (el) => {
+    el.closest('form').submit()
+  }
 </script>
 
 <input
@@ -11,6 +24,7 @@
   type="text"
   bind:value={field.value}
   {placeholder}
+  on:keydown="{keyDispatcher}"
   />
 
 <style>
