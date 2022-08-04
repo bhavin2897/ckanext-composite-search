@@ -177,7 +177,7 @@
       this.getAttribute('data-label'),
       this.getAttribute('data-value')
     );
-    
+
   }
 </script>
 
@@ -289,5 +289,11 @@
   }
   .select2-options--option.selected {
     background-color: #dcdcdc;
+  }
+
+  @media (max-width: 480px) {
+    .select2 {
+        width: 100%;
+    }
   }
 </style>

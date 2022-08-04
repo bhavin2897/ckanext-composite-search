@@ -97,4 +97,8 @@
 
     overflow-y: auto;
   }
+
+  @media (max-width: 480px) {
+
+  }
 </style>
