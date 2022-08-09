@@ -12,10 +12,10 @@ def try_bool(v):
 
 
 class SearchParam:
-    keys = ("value", "name", "junction", "negation")
+    keys = ("value", "type", "junction", "negation")
     converters = (identity, identity, identity, try_bool)
     value: str
-    name: str
+    type: str
     junction: str
     negation: bool
 
@@ -24,7 +24,7 @@ class SearchParam:
             setattr(self, k, conv(v))
 
     def __repr__(self):
-        return f'SearchParam({self.value!r}, {self.name!r}, {self.junction!r}, {self.negation!r})'
+        return f'SearchParam({self.value!r}, {self.type!r}, {self.junction!r}, {self.negation!r})'
 
     def __bool__(self):
         return bool(self.value)

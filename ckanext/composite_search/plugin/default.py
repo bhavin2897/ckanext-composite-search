@@ -50,7 +50,7 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
                 continue
 
             sign = '-' if tk.asbool(param.negation) else '+'
-            fragment = f"{param.name}:* AND {sign}{param.name}:({value})"
+            fragment = f"{param.type}:* AND {sign}{param.type}:({value})"
             if query:
                 query = f'{fragment} {param.junction} ({query})'
             else:
@@ -59,10 +59,19 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
         q = search_params.get('q', '')
         q += ' ' + query
         search_params['q'] = q.strip()
+
         return search_params, params
 
     def _cs_prepare_value(self, param: SearchParam):
-        literal = _literals[tk.config.get(CONFIG_LITERAL_QUOTES, DEFAULT_LITERAL_QUOTES)]
-        keywords = tk.aslist(tk.config.get(CONFIG_KEYWORDS, DEFAULT_KEYWORDS))
+        """Escape search term.
 
-        return ' '.join([literal(word) for word in param.value.split()])
+        Split term string into separate tokens(words) before escaping.
+        In case of keyword-field, just escape the value, without splitting.
+        """
+        literal = _literals[tk.config.get(CONFIG_LITERAL_QUOTES, DEFAULT_LITERAL_QUOTES)]
+        keywords = set(tk.aslist(tk.config.get(CONFIG_KEYWORDS, DEFAULT_KEYWORDS)))
+
+        if param.type in keywords:
+            return literal(param.value)
+
+        return ' '.join(literal(word) for word in param.value.split())

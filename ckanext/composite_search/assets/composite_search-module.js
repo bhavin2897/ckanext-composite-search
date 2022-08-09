@@ -45,7 +45,9 @@ ckan.module("composite-search", function ($) {
                     if (!data[pair[0]]) {
                         data[pair[0]] = [];
                     }
-                    data[pair[0]].push(decodeURIComponent(pair[1]));
+
+                    // don't forget to handle spaces encoded as `+` instead of `%20`
+                    data[pair[0]].push(decodeURIComponent(pair[1].replace(/\+/g, " ")));
                     return data;
                 }, {});
             var keys = Object.keys(stacks);
