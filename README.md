@@ -35,9 +35,20 @@ To install ckanext-composite-search:
 
 
 ```ini
-# The minimum number of hours to wait before re-checking a resource
-# (optional, default: 24).
-ckanext.composite_search.some_setting = some_default_value
+# Prefix for field-names of the search form. Due to the way,
+# CKAN handles extra search parameters, prefix must begin with `ext_`
+# (optional, default: ext_composite_).
+ckanext.composite_search.prefix = ext_p_
+
+# Escape search terms using single-quote, double-quote or both at the same time.
+# (optional, default: double, values: single|double|both).
+ckanext.composite_search.plugin.default.literal_quotes = single
+
+# List of field names that must not be tokenized. Usually, one will
+# use this option when searching by tags or other keywords.
+# (optional, default: <empty>).
+ckanext.composite_search.plugin.default.keyword_fields = tags groups
+
 ```
 
 ## License

@@ -9,8 +9,11 @@ from ckan.lib.search.query import solr_literal
 from ..interfaces import ICompositeSearch
 from ..utils import SearchParam
 
-CONFIG_LITERAL_QUOTES = "ckanext.composite_search.literal.quotes"
+CONFIG_LITERAL_QUOTES = "ckanext.composite_search.plugin.default.literal_quotes"
 DEFAULT_LITERAL_QUOTES = "double"
+
+CONFIG_KEYWORDS = "ckanext.composite_search.plugin.default.keyword_fields"
+DEFAULT_KEYWORDS = []
 
 
 def single_quote_solr_literal(t: str) -> str:
@@ -41,19 +44,25 @@ class DefaultSearchPlugin(plugins.SingletonPlugin):
     ) -> tuple[dict[str, Any], list[SearchParam]]:
         query = ''
 
-        literal = _literals.get(tk.config.get(CONFIG_LITERAL_QUOTES, DEFAULT_LITERAL_QUOTES), _literals[DEFAULT_LITERAL_QUOTES])
-
         for param in reversed(params):
-            value = ' '.join([literal(word) for word in param.value.split()])
+            value = self._cs_prepare_value(param)
             if not value:
                 continue
+
             sign = '-' if tk.asbool(param.negation) else '+'
-            fragment = f"{param.type}:* AND {sign}{param.type}:({value})"
+            fragment = f"{param.name}:* AND {sign}{param.name}:({value})"
             if query:
                 query = f'{fragment} {param.junction} ({query})'
             else:
                 query = fragment
+
         q = search_params.get('q', '')
         q += ' ' + query
         search_params['q'] = q.strip()
         return search_params, params
+
+    def _cs_prepare_value(self, param: SearchParam):
+        literal = _literals[tk.config.get(CONFIG_LITERAL_QUOTES, DEFAULT_LITERAL_QUOTES)]
+        keywords = tk.aslist(tk.config.get(CONFIG_KEYWORDS, DEFAULT_KEYWORDS))
+
+        return ' '.join([literal(word) for word in param.value.split()])
