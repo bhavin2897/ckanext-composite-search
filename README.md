@@ -2,8 +2,10 @@
 
 # ckanext-composite-search
 
-**TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
+Complex search form for the dataset search page.
 
+Filter by field, search by multiple criteria, combine filter with the AND/OR operators and
+forget about Lucene queries
 
 ## Requirements
 
@@ -11,8 +13,8 @@ Compatibility with core CKAN versions:
 
 | CKAN version    | Compatible? |
 |-----------------|-------------|
-| 2.8 and earlier | no          |
 | 2.9             | yes         |
+| 2.10            | yes         |
 |                 |             |
 
 
@@ -20,32 +22,23 @@ Compatibility with core CKAN versions:
 
 To install ckanext-composite-search:
 
-1. Activate your CKAN virtual environment, for example:
-
-     . /usr/lib/ckan/default/bin/activate
-
-2. Install the extension
-
+1. Install the extension
+     ```sh
 	pip install ckanext-composite-search
+     ```
 
-3. Add `composite_search default_composite_search` to the `ckan.plugins`
-   setting in your CKAN config file (by default the config file is located at
-   `/etc/ckan/default/ckan.ini`).
-
-4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
-
-     sudo service apache2 reload
+1. Add `composite_search default_composite_search` to the `ckan.plugins`
+   setting in your CKAN config file.
 
 
 ## Config settings
 
-None at present
 
-**TODO:** Document any optional config settings here. For example:
-
-	# The minimum number of hours to wait before re-checking a resource
-	# (optional, default: 24).
-	ckanext.composite_search.some_setting = some_default_value
+```ini
+# The minimum number of hours to wait before re-checking a resource
+# (optional, default: 24).
+ckanext.composite_search.some_setting = some_default_value
+```
 
 ## License
 
