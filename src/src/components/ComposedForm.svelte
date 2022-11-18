@@ -26,24 +26,45 @@
   <div use:dndzone={{items: $formData, flipDurationMs, dropTargetStyle}} on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
     {#each $formData as field, idx (field)}
       <div animate:flip={{duration: 300}}>
-	<Field  bind:field on:remove={() => remove(idx)} isLast={idx == $formData.length - 1} />
+	  <Field  bind:field on:remove={() => remove(idx)} isLast={idx == $formData.length - 1} />
       </div>
     {/each}
   </div>
-  <button class="add-field" on:click={add} type="button">
-    <strong>+</strong>
-    Add search field
-  </button>
-</div>
 
+    <button class="add-field" on:click={add} type="button">
+    <strong>+</strong>
+    Add search field 
+    </button>
+
+    <span class="input-group-btn">
+      <button class="another" type="submit" value="search" aria-label="Submit" >
+    <i class="fa fa-search"> Search </i>
+      </button>
+  </span>
+  </div>
+
+
+
+ 
 <style>
+
   .add-field {
     padding: 19px 25px;
-    width: 100%;
+    width: 20%;
     border-radius: 5px;
     background: #DCDCDC;
     border: none;
-    text-align: start;
+    display: inline-block;
+    text-align: center;
     cursor: pointer;
+  }
+
+  .another{
+   padding:19px 25px; border-radius:5px; width:20%;
+   background-color: #2E759E;
+   display: inline-block;
+   position: absolute;
+   right: 0;
+   color: #FFFFFF;
   }
 </style>
