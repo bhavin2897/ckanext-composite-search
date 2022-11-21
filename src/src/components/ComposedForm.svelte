@@ -36,16 +36,13 @@
     Add search field 
     </button>
 
-    <span class="input-group-btn">
       <button class="another" type="submit" value="search" aria-label="Submit" >
     <i class="fa fa-search"> Search </i>
       </button>
-  </span>
   </div>
 
 
 
- 
 <style>
 
   .add-field {
