@@ -33,11 +33,11 @@
 
     <button class="add-field" on:click={add} type="button">
     <strong>+</strong>
-    Add search field 
+    Add Search Field 
     </button>
 
       <button class="another" type="submit" value="search" aria-label="Submit" >
-    <i class="fa fa-search">   Search </i>
+    <i class="fa fa-search"></i>  Search 
       </button>
   </div>
 
@@ -47,7 +47,7 @@
 
   .add-field {
     padding: 19px 25px;
-    width: 20%;
+    width: 30%;
     border-radius: 5px;
     background: #DCDCDC;
     border: none;
@@ -57,9 +57,8 @@
   }
 
   .another{
-   padding:19px 25px; border-radius:5px; width:20%;
-   background-color: #2E759E;
-   
+   padding:19px 25px; border-radius:5px; width:30%;
+   background-color: #206B82;
    border: none;
    position: relative;
    float: right;
