@@ -37,7 +37,7 @@
     </button>
 
       <button class="another" type="submit" value="search" aria-label="Submit" >
-    <i class="fa fa-search"> Search </i>
+    <i class="fa fa-search">   Search </i>
       </button>
   </div>
 
@@ -59,9 +59,14 @@
   .another{
    padding:19px 25px; border-radius:5px; width:20%;
    background-color: #2E759E;
-   display: inline-block;
-   position: absolute;
+   
+   border: none;
+   position: relative;
+   float: right;
    right: 0;
    color: #FFFFFF;
+   clear: both;
+   cursor: pointer;
+   overflow: hidden;
   }
 </style>
