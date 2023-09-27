@@ -5,6 +5,7 @@
   import {formData} from '../stores';
   const flipDurationMs = 300;
   const dropTargetStyle = {}
+
   const add = () => {
     formData.addDefault()
   }
@@ -20,6 +21,7 @@
   function handleDndFinalize(e: CustomEvent) {
     $formData = e.detail.items;
   }
+
 </script>
 
 <div class="composite-form">
@@ -36,9 +38,11 @@
     Add Search Field 
     </button>
 
-      <button class="another" type="submit" value="search" aria-label="Submit" >
-    <i class="fa fa-search"></i>  Search 
+
+    <button class="another" type="submit" value="search" aria-label="Submit">
+    <i class="fa fa-search"></i>  Search
       </button>
+
   </div>
 
 

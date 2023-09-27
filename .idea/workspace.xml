@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="44ff2e49-2a0e-444d-9eba-8fe966c1e40f" name="Changes" comment="final changes to css">
+      <change beforePath="$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/components/ComposedForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/components/ComposedForm.svelte" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/package-lock.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/types/index.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/utils.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/assets/composite_search-module.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js.map" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/components/ComposedForm.svelte" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/stores/index.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/components/index.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/App.svelte" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/main.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/plugin/default.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/interfaces.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ckanext/composite_search/plugin/base.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/components/Tooltip.svelte" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/Example.svelte" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/src/dev.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/public/index.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/public/global.css" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="2HckCoUOuiDFZIg4Dar6NPMeS6Z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44ff2e49-2a0e-444d-9eba-8fe966c1e40f" name="Changes" comment="" />
+      <created>1668591634783</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668591634783</updated>
+    </task>
+    <task id="LOCAL-00001" summary="svelte adoption to nfdi format">
+      <created>1668772668055</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668772668055</updated>
+    </task>
+    <task id="LOCAL-00002" summary="svelte adoption to nfdi format">
+      <created>1668773060212</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668773060212</updated>
+    </task>
+    <task id="LOCAL-00003" summary="svelte adoption to nfdi format">
+      <created>1668773532447</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668773532447</updated>
+    </task>
+    <task id="LOCAL-00004" summary="svelte adoption to nfdi format">
+      <created>1668773961876</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668773961876</updated>
+    </task>
+    <task id="LOCAL-00005" summary="adding bundlejs for updating css and html">
+      <created>1668778866832</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668778866832</updated>
+    </task>
+    <task id="LOCAL-00006" summary="final results">
+      <created>1668781332784</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1668781332784</updated>
+    </task>
+    <task id="LOCAL-00007" summary="attempt three">
+      <created>1668784547310</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1668784547310</updated>
+    </task>
+    <task id="LOCAL-00008" summary="using npm run build changes">
+      <created>1668786113463</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1668786113463</updated>
+    </task>
+    <task id="LOCAL-00009" summary="using npm run build changes">
+      <created>1669019103408</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669019103408</updated>
+    </task>
+    <task id="LOCAL-00010" summary="using npm run build changes">
+      <created>1669020229997</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669020229997</updated>
+    </task>
+    <task id="LOCAL-00011" summary="adding float css">
+      <created>1669020280978</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669020280978</updated>
+    </task>
+    <task id="LOCAL-00012" summary="final changes to css">
+      <created>1669020864008</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669020864008</updated>
+    </task>
+    <task id="LOCAL-00013" summary="final changes to css">
+      <created>1669021622206</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669021622206</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="svelte adoption to nfdi format" />
+    <MESSAGE value="adding bundlejs for updating css and html" />
+    <MESSAGE value="final results" />
+    <MESSAGE value="attempt three" />
+    <MESSAGE value="using npm run build changes" />
+    <MESSAGE value="adding float css" />
+    <MESSAGE value="final changes to css" />
+    <option name="LAST_COMMIT_MESSAGE" value="final changes to css" />
+  </component>
+</project>
