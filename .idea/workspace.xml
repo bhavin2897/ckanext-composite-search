@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44ff2e49-2a0e-444d-9eba-8fe966c1e40f" name="Changes" comment="final changes to css">
+    <list default="true" id="44ff2e49-2a0e-444d-9eba-8fe966c1e40f" name="Changes" comment="image search advancements">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ckanext/composite_search/plugin/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/composite_search/plugin/default.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/src/components/ComposedForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/components/ComposedForm.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src/dev.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/dev.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +15,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/package-lock.json" root0="FORCE_HIGHLIGHTING" />
@@ -146,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669021622206</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="image search advancements">
+      <created>1695807173996</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1695807173996</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,6 +187,17 @@
     <MESSAGE value="using npm run build changes" />
     <MESSAGE value="adding float css" />
     <MESSAGE value="final changes to css" />
-    <option name="LAST_COMMIT_MESSAGE" value="final changes to css" />
+    <MESSAGE value="image search advancements" />
+    <option name="LAST_COMMIT_MESSAGE" value="image search advancements" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/ckanext/composite_search/utils.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

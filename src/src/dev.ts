@@ -8,8 +8,8 @@ const app = new Example({
         order: [
             "any",
             "title",
-            "description",
-            "keyword",
+            "descrption",
+            "random",
             "topic",
             "purpose",
             "data_type",
@@ -23,8 +23,8 @@ const app = new Example({
                 default: true,
             },
             title: { type: "text", label: "Title" },
-            description: { type: "text", label: "Description" },
-            keyword: { type: "text", label: "Keyword" },
+            descrption: { type: "text", label: "Description" },
+            random: { type: "text", label: "Random" },
             topic: { type: "text", label: "Topic" },
             purpose: { type: "text", label: "Purpose" },
             organization: {

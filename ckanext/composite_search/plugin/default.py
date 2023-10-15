@@ -9,6 +9,8 @@ from ckan.lib.search.query import solr_literal
 from ..interfaces import ICompositeSearch
 from ..utils import SearchParam
 
+
+
 CONFIG_LITERAL_QUOTES = "ckanext.composite_search.plugin.default.literal_quotes"
 DEFAULT_LITERAL_QUOTES = "double"
 
