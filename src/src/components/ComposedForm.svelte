@@ -45,24 +45,25 @@
         const formDataToSend = new FormData(formElement);
         for (let pair of formDataToSend.entries()) {
             console.log(pair[0] + ': ' + pair[1]);
-         }
-        try {
-            let response = await fetch('/molecule_view', {
-                method: 'POST',
-                body: formDataToSend
-            });
-            if(response.ok) {
-                console.log('About to redirect...');
-                window.location.href = '/molecule_view';
-                console.log('Redirection should have occurred');
-            } else {
-                console.error('Form submission failed:', response.statusText);
-            }
-        } catch(err) {
-            console.error('Error in form submission:', err);
         }
+        console.log('Inchi key detected. Submitting and opening a new page')
+
+        // Setting the form's action to the desired endpoint (you may adjust this if needed)
+
+
+        formElement.action = '/dataset';
         formElement.submit();
-    } else {
+        console.log('Form submitted');
+
+       setTimeout(() => {
+            window.location.href = '/molecule_view';
+        }, 50);
+
+       formElement.removeAttribute('target');
+
+        }
+    else {
+        console.log('No inchi_key detected. Submitting as default.');
         formElement.action = '/dataset/';
         formElement.submit(); // perform a regular form submission
     }
@@ -88,7 +89,7 @@
         Add Search Field
     </button>
 
-    <button class="another" type="submit" aria-label="Search" >
+    <button class="another" aria-label="Search" >
       <i class="fa fa-search"></i> Search
     </button>
 
