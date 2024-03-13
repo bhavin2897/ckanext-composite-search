@@ -5,9 +5,16 @@
   import {formData} from '../stores';
   //import {push} from 'svelte-routing';
   import { onMount } from 'svelte';
+  import { writable } from 'svelte/store';
 
   const flipDurationMs = 300;
   const dropTargetStyle = {}
+
+  function resetFilters(): void {
+    formData.set([]); // Clear the current state
+    formData.addDefault(); // Add a default state back if necessary
+}
+
 
   const add = () => {
     formData.addDefault()
@@ -24,6 +31,8 @@
   function handleDndFinalize(e: CustomEvent) {
     $formData = e.detail.items
   }
+
+
 
   async function handleFormSubmit(event) {
     event.preventDefault();
@@ -72,9 +81,11 @@
     console.log('Type for index', idx, ':', field.type);
     });
 
+
 </script>
 
-<form on:submit={handleFormSubmit}>
+
+<form on:submit|preventDefault={handleFormSubmit}>
 <div class="composite-form">
   <div use:dndzone={{items: $formData, flipDurationMs, dropTargetStyle}} on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
     {#each $formData as field, idx (field)}
@@ -86,7 +97,11 @@
 
     <button class="add-field" on:click={add} type="button">
         <strong>+</strong>
-        Add Search Field
+            Add Search Field
+    </button>
+
+    <button id="reset-button" on:click|preventDefault={resetFilters} type="button" style="background:none;border:none;color:grey;cursor:pointer;text-decoration:underline;">
+      Reset
     </button>
 
     <button class="another" aria-label="Search" >

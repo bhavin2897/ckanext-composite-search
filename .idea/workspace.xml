@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44ff2e49-2a0e-444d-9eba-8fe966c1e40f" name="Changes" comment="submit and href async">
+    <list default="true" id="44ff2e49-2a0e-444d-9eba-8fe966c1e40f" name="Changes" comment="molecule view submit and open page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ckanext/composite_search/assets/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/src/components/ComposedForm.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/src/components/ComposedForm.svelte" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697410110741</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="molecule view submit and open page">
+      <created>1697446911678</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1697446911678</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,7 +199,8 @@
     <MESSAGE value="final changes to css" />
     <MESSAGE value="image search advancements" />
     <MESSAGE value="submit and href async" />
-    <option name="LAST_COMMIT_MESSAGE" value="submit and href async" />
+    <MESSAGE value="molecule view submit and open page" />
+    <option name="LAST_COMMIT_MESSAGE" value="molecule view submit and open page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
