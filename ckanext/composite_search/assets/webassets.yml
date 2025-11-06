@@ -1,11 +1,11 @@
 composite_search-css:
-  filter: cssrewrite
+  filters: cssrewrite
   output: ckanext-composite_search/%(version)s-composite_search.css
   contents:
     - bundle.css
 
 composite_search:
-  filter: rjsmin
+  filters: rjsmin
   output: ckanext-composite_search/%(version)s-composite_search.js
   contents:
     - bundle.js
