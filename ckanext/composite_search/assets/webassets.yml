@@ -1,5 +1,5 @@
 composite_search-css:
-  filters: cssrewrite
+  #filters: cssrewrite
   output: ckanext-composite_search/%(version)s-composite_search.css
   contents:
     - bundle.css

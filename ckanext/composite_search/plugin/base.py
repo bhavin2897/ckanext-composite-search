@@ -25,7 +25,8 @@ class CompositeSearchPlugin(plugins.SingletonPlugin):
     # IConfigurer
 
     def update_config(self, config_):
-        toolkit.add_resource("assets", "composite_search")
+        toolkit.add_resource("../assets", "composite_search")
+        toolkit.add_public_directory(config_, "assets")
 
     # ITemplateHelpers
     def get_helpers(self):
