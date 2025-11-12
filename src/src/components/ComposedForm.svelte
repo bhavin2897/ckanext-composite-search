@@ -65,7 +65,7 @@
         console.log('Form submitted');
 
        setTimeout(() => {
-            window.location.href = '/molecule_view';
+            window.location.href = '/molecule';
         }, 50);
 
        formElement.removeAttribute('target');
