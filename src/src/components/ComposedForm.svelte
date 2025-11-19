@@ -52,32 +52,59 @@
     const formElement = event.target as HTMLFormElement;
     const hasInchiKey = $formData.some((field) => field.type === "inchi_key");
 
-    console.log("Entity type:", entityType);
+    // In case onMount hasn't run yet for some reason, re-read from body
+    if (!entityType) {
+      entityType = document.body.getAttribute("data-type");
+    }
+
+    console.log("Entity type (before routing):", entityType);
     console.log("Has inchi_key:", hasInchiKey);
 
-    // We now branch based on data-type,
-    // but always submit the form normally (same page).
+    // -------------------------------
+    // HOMEPAGE / OTHER PAGES (NULL):
+    // If there is NO data-type, always redirect to DATASET search.
+    // -------------------------------
+    if (!entityType) {
+      console.log("No data-type found — forcing dataset search.");
+      // Adjust this path if your CKAN is mounted under a prefix
+      formElement.action = "/dataset/";
+      formElement.submit();
+      return;
+    }
+
+    // -------------------------------
+    // DATASET SEARCH
+    // -------------------------------
+    if (entityType === "dataset") {
+      console.log("Dataset search.");
+      // Ensure we go to dataset search endpoint
+      formElement.action = "/dataset/"; // change if your dataset search URL is different
+      formElement.submit();
+      return;
+    }
+
+    // -------------------------------
+    // MOLECULE SEARCH
+    // -------------------------------
     if (entityType === "molecule") {
       if (hasInchiKey) {
-        console.log(
-          "Molecule advanced search with inchi_key. Submitting in same page."
-        );
+        console.log("Molecule advanced search with inchi_key.");
       } else {
-        console.log(
-          "Molecule advanced search without inchi_key. Submitting in same page."
-        );
+        console.log("Molecule advanced search without inchi_key.");
       }
-      // Use the existing form action defined by CKAN
+      // Keep molecule behaviour as-is (adjust URL if needed)
+      // If you have a dedicated molecule search endpoint, use it here:
+      // formElement.action = "/molecule";
       formElement.submit();
-    } else if (entityType === "dataset") {
-      console.log("Dataset advanced search. Submitting in same page.");
-      formElement.submit();
-    } else {
-      console.log(
-        "Unknown or missing data-type on <body>. Submitting with default behaviour."
-      );
-      formElement.submit();
+      return;
     }
+
+    // -------------------------------
+    // FALLBACK (unexpected type)
+    // -------------------------------
+    console.log("Unknown type — falling back to dataset search.");
+    formElement.action = "/dataset/";
+    formElement.submit();
   }
 
   $: $formData.forEach((field, idx) => {
@@ -137,7 +164,6 @@
 
   .another {
     padding: 19px 25px;
-    border-radius: 5px;
     width: 30%;
     background-color: #206B82;
     border: none;
