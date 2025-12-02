@@ -112,7 +112,15 @@
   });
 </script>
 
-<form on:submit|preventDefault={handleFormSubmit}>
+<form
+  on:submit|preventDefault={handleFormSubmit}
+  on:keydown={(e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleFormSubmit(e);
+    }
+  }}
+>
   <div class="composite-form">
     <div
       use:dndzone={{ items: $formData, flipDurationMs, dropTargetStyle }}
@@ -144,7 +152,7 @@
       Reset
     </button>
 
-    <button class="another" aria-label="Search">
+    <button class="another" aria-label="Search" type="submit">
       <i class="fa fa-search"></i> Search
     </button>
   </div>
